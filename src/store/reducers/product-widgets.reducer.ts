@@ -3,13 +3,13 @@ import { ProductWidget } from '../../interfaces/product-widgets.interface';
 import { fetchProductWidgets } from '../actions/product-widgets.actions';
 
 interface ProductWidgetsState {
-  productWidgets: ProductWidget[];
+  widgets: ProductWidget[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ProductWidgetsState = {
-  productWidgets: [],
+  widgets: [],
   loading: false,
   error: null,
 };
@@ -26,7 +26,7 @@ export const productWidgetsSlice = createSlice({
       })
       .addCase(fetchProductWidgets.fulfilled, (state, action) => {
         state.loading = false;
-        state.productWidgets = action.payload;
+        state.widgets = action.payload;
       })
       .addCase(fetchProductWidgets.rejected, (state, action) => {
         state.loading = false;

@@ -1,10 +1,33 @@
 .title {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  font-size: rem(100px);
-  font-weight: 900;
-  letter-spacing: rem(-2px);
+  color: var(--mantine-color-black);
+  font-size: rem(30px);
+  font-weight: 700;
+  line-height: rem(36px);
+  letter-spacing: rem(-1px);
 
   @media (max-width: $mantine-breakpoint-md) {
-    font-size: rem(50px);
+    font-size: rem(30px);
   }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(20px);
+  }
+}
+
+.box {
+  background-color: var(--box-background-color);
+  box-shadow:
+    0px 0.7777777910232544px 2.9907407760620117px 0px rgba(0, 0, 0, 0.03),
+    0px 3.422222137451172px 6.192592620849609px 0px rgba(0, 0, 0, 0.05),
+    0px 8.399999618530273px 12.350000381469727px 0px rgba(0, 0, 0, 0.06),
+    0px 16.177778244018555px 24.207406997680664px 0px rgba(0, 0, 0, 0.08),
+    0px 27.22222137451172px 44.50925827026367px 0px rgba(0, 0, 0, 0.1),
+    0px 42px 76px 0px rgba(0, 0, 0, 0.13);
+}
+
+.content {
+  border-radius: rem(10px);
+  padding-bottom: rem(20px);
+  margin-top: rem(20px);
+  margin-bottom: rem(20px);
 }
