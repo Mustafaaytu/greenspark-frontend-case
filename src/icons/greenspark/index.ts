@@ -1,0 +1,1 @@
+export { GreensparkIcon } from './GreensparkIcon';

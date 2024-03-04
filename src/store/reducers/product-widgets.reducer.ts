@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ProductWidget } from '../../interfaces/product-widgets.interface';
+import { ProductWidgetItem } from '../../interfaces/product-widgets.interface';
 import { fetchProductWidgets } from '../actions/product-widgets.actions';
 
 interface ProductWidgetsState {
-  productWidgets: ProductWidget[];
+  widgets: ProductWidgetItem[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ProductWidgetsState = {
-  productWidgets: [],
+  widgets: [],
   loading: false,
   error: null,
 };
@@ -17,7 +17,11 @@ const initialState: ProductWidgetsState = {
 export const productWidgetsSlice = createSlice({
   name: 'productWidgets',
   initialState,
-  reducers: {},
+  reducers: {
+    updateProductWidgets: (state, action) => {
+      state.widgets = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProductWidgets.pending, (state) => {
@@ -26,7 +30,7 @@ export const productWidgetsSlice = createSlice({
       })
       .addCase(fetchProductWidgets.fulfilled, (state, action) => {
         state.loading = false;
-        state.productWidgets = action.payload;
+        state.widgets = action.payload;
       })
       .addCase(fetchProductWidgets.rejected, (state, action) => {
         state.loading = false;
@@ -36,3 +40,4 @@ export const productWidgetsSlice = createSlice({
 });
 
 export default productWidgetsSlice.reducer;
+export const { updateProductWidgets } = productWidgetsSlice.actions;

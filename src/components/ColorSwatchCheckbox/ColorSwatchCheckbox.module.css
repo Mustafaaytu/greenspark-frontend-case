@@ -1,0 +1,27 @@
+.colorSwatchCheckbox {
+  --cs-size: rem(16px);
+  border-radius: 0;
+  :global {
+    .mantine-ColorSwatch-childrenOverlay {
+      border-radius: 0;
+    }
+
+    .mantine-ColorSwatch-colorOverlay {
+      border-radius: 0;
+    }
+
+    .mantine-ColorSwatch-shadowOverlay {
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .mantine-ColorSwatch-childrenOverlay {
+      border-radius: 0;
+    }
+
+    .mantine-ColorSwatch-alphaOverlay {
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+}
