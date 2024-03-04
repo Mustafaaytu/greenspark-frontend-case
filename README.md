@@ -1,4 +1,9 @@
-# Mantine Vite template
+# Greenspark Frontend Task
+
+This is a simple frontend task for Greenspark. The task is to create a simple frontend application that allows users to edit widget properties and see the changes in real-time.
+
+Live Demo:
+[Greenspark Frontend Task](https://greenspark-frontend-case.vercel.app/)
 
 ## Features
 
