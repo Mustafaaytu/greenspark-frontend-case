@@ -1,4 +1,4 @@
-export interface ProductWidget {
+export interface ProductWidgetItem {
   id: number;
   type: string;
   amount: number;

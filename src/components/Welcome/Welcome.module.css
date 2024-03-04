@@ -30,4 +30,10 @@
   padding-bottom: rem(20px);
   margin-top: rem(20px);
   margin-bottom: rem(20px);
+
+  :global {
+    @media (max-width: $mantine-breakpoint-sm) {
+      --group-justify: center !important;
+    }
+  }
 }

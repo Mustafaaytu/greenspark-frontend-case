@@ -1,4 +1,5 @@
 .widget {
+  min-width: rem(220px);
   border-radius: 5.95px;
   background-color: #2e3a8c;
 }

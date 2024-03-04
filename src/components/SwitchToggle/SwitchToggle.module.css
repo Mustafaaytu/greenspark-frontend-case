@@ -1,0 +1,52 @@
+.switchToggle {
+  margin-top: rem(10px);
+  :global {
+    .mantine-Switch-body {
+      justify-content: space-between;
+
+      .mantine-Switch-track {
+        border: 0.5px solid #afc6bd;
+      }
+
+      .mantine-Switch-thumb {
+        border: 0.5px solid #f2ebdb;
+        height: rem(15px);
+        width: rem(15px);
+        &:hover {
+          box-shadow:
+            0px 0.7777777910232544px 2.9907407760620117px 0px rgba(0, 0, 0, 0.03),
+            0px 3.422222137451172px 6.192592620849609px 0px rgba(0, 0, 0, 0.05),
+            0px 8.399999618530273px 12.350000381469727px 0px rgba(0, 0, 0, 0.06),
+            0px 16.177778244018555px 24.207406997680664px 0px rgba(0, 0, 0, 0.08),
+            0px 27.22222137451172px 44.50925827026367px 0px rgba(0, 0, 0, 0.1),
+            9px 36px 36px 9px #afc6bd;
+        }
+      }
+    }
+
+    .mantine-Switch-label {
+      font-family: Cabin, sans-serif;
+      font-size: rem(14px);
+      font-weight: 400;
+      line-height: rem(17px);
+      color: var(--widget-settings-text-color);
+    }
+  }
+  &[data-position='left'] {
+    .inputLabel {
+      color: var(--mantine-color-gray-9);
+      padding-right: var(--mantine-spacing-sm);
+      margin-bottom: 0;
+    }
+  }
+
+  .inputLabel {
+    &.disabled {
+      color: var(--mantine-color-gray-5);
+    }
+
+    &.inverted {
+      color: var(--mantine-color-white);
+    }
+  }
+}

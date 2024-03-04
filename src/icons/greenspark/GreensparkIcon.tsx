@@ -3,6 +3,23 @@ import React from 'react';
 interface GreensparkIconProps extends React.SVGProps<SVGSVGElement> {}
 
 export function GreensparkIcon({ height, width, className, color, ...props }: GreensparkIconProps) {
+  switch (color) {
+    case '#FFFFFF':
+      color = '#000';
+      break;
+    case '#000':
+      color = '#FFFFFF';
+      break;
+    case '#3B755F':
+      color = '#F2EBDB';
+      break;
+    case '#F2EBDB':
+      color = '#3B755F';
+      break;
+    default:
+      color = '#F9F9F9';
+  }
+
   return (
     <svg
       width={width || 41}
