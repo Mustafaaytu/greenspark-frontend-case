@@ -22,7 +22,7 @@ export function Welcome() {
     }
   }, []);
 
-  function handleSettingsChange(id: number, isChecked: boolean) {
+  function handleOnActive(id: number, isChecked: boolean) {
     const updatedWidgets = widgets.map((widget) => {
       if (widget.id === id) {
         return {
@@ -34,6 +34,43 @@ export function Welcome() {
         return {
           ...widget,
           active: false,
+          selectedColor: hexToText(widget.selectedColor),
+        };
+      }
+    });
+
+    dispatch(updateProductWidgets(updatedWidgets));
+  }
+
+  function handleOnColorChange(id: number, color: string) {
+    const updatedWidgets = widgets.map((widget) => {
+      if (widget.id === id) {
+        return {
+          ...widget,
+          selectedColor: hexToText(color),
+        };
+      } else {
+        return {
+          ...widget,
+          selectedColor: hexToText(widget.selectedColor),
+        };
+      }
+    });
+
+    dispatch(updateProductWidgets(updatedWidgets));
+  }
+
+  function handleOnLinkedChange(id: number, linked: boolean) {
+    const updatedWidgets = widgets.map((widget) => {
+      if (widget.id === id) {
+        return {
+          ...widget,
+          linked,
+          selectedColor: hexToText(widget.selectedColor),
+        };
+      } else {
+        return {
+          ...widget,
           selectedColor: hexToText(widget.selectedColor),
         };
       }
@@ -54,7 +91,9 @@ export function Welcome() {
           <ProductWidgetSettings
             key={widget.id}
             widget={widget}
-            onSettingsChange={handleSettingsChange}
+            onActivate={handleOnActive}
+            onColorChange={handleOnColorChange}
+            onLinkedChange={handleOnLinkedChange}
           />
         ))}
       </Group>

@@ -11,7 +11,6 @@ import {
   Text,
   UnstyledButton,
 } from '@mantine/core';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckboxWithTooltip } from '../CheckboxWithTooltip/CheckboxWithTooltip';
 import { ColorSwatchCheckbox } from '../ColorSwatchCheckbox/ColorSwatchCheckbox';
@@ -21,31 +20,50 @@ import classes from './ProductWidgetSettings.module.css';
 
 interface ProductWidgetSettingsProps {
   widget: ProductWidgetItem;
-  onSettingsChange?: (id: number, active: boolean) => void;
+  onLinkedChange?: (id: number, linked: boolean) => void;
+  onColorChange?: (id: number, color: string) => void;
+  onActivate?: (id: number, active: boolean) => void;
 }
 
-export function ProductWidgetSettings({ widget, onSettingsChange }: ProductWidgetSettingsProps) {
-  const [selectedColor, setSelectedColor] = useState(widget.selectedColor);
-  const [linked, setLinked] = useState(widget.linked);
-
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
-
+export function ProductWidgetSettings({
+  widget,
+  onActivate,
+  onColorChange,
+  onLinkedChange,
+}: ProductWidgetSettingsProps) {
   const tooltipMessageComponent: JSX.Element = (
     <Stack className={classes.tooltipMessage} p={10}>
-      <Text>
+      <Text
+        style={{
+          fontFamily: 'Cabin, san-serif',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          textAlign: 'center',
+        }}
+      >
         Use this button to save this information in your profile, after that you will be able to
         access it any time and share it via email.
       </Text>
-      <Link to="/profile">Go to profile</Link>
+      <Link
+        to="/profile"
+        style={{
+          fontFamily: 'Cabin, san-serif',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          textDecoration: 'none',
+          color: '#3B755F',
+          textAlign: 'center',
+        }}
+      >
+        View Public Profile
+      </Link>
     </Stack>
   );
 
   return (
     <>
       <Box>
-        <ProductWidget {...widget} selectedColor={selectedColor} />
+        <ProductWidget {...widget} selectedColor={widget.selectedColor} />
         <CheckboxWithTooltip
           label={
             <div className={classes.badgeText}>
@@ -61,10 +79,10 @@ export function ProductWidgetSettings({ widget, onSettingsChange }: ProductWidge
             </div>
           }
           labelPosition="left"
-          checked={linked}
+          checked={widget.linked}
           style={{ justifyContent: 'space-between' }}
           onChange={(event) => {
-            setLinked(event.currentTarget.checked);
+            onLinkedChange?.(widget.id, event.currentTarget.checked);
           }}
         />
         <Group justify="space-between" mt={10}>
@@ -74,8 +92,10 @@ export function ProductWidgetSettings({ widget, onSettingsChange }: ProductWidge
               <ColorSwatchCheckbox
                 key={name}
                 color={color}
-                checked={selectedColor === color}
-                onClick={() => handleColorChange(color)}
+                checked={widget.selectedColor === color}
+                onClick={() => {
+                  onColorChange?.(widget.id, color);
+                }}
               />
             ))}
           </Group>
@@ -85,7 +105,7 @@ export function ProductWidgetSettings({ widget, onSettingsChange }: ProductWidge
           label="Activate badge"
           labelPosition="left"
           onChange={(event) => {
-            onSettingsChange?.(widget.id, event.currentTarget.checked);
+            onActivate?.(widget.id, event.currentTarget.checked);
           }}
         />
       </Box>

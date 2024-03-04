@@ -1,7 +1,7 @@
 import { ColorSwatch } from '@mantine/core';
 import classes from './ColorSwatchCheckbox.module.css';
 
-interface ColorSwatchCheckboxProps {
+export interface ColorSwatchCheckboxProps {
   color: string;
   checked?: boolean;
   checkBoxColor?: string;

@@ -35,7 +35,7 @@ export function Profile() {
               fontWeight: 'bold',
             }}
           >
-            Back to Welcome
+            Back to Widgets
           </Link>
         </Group>
 
